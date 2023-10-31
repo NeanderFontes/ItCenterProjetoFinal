@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projfinal</title>
+    <!-- Inclua as bibliotecas Bootstrap CSS e jQuery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Inclua a biblioteca jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Ligação CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- Centralizar o conteúdo e aplicar uma caixa com limite cinza -->
+    <div class="border p-4">
+        <div id="meuCarrossel" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Slides do Carrossel com mais largura e menos altura -->
+            <div class="carousel-inner" style="max-width: 800px; max-height: 400px; margin: 0 auto;">
+                <div class="carousel-item active">
+                    <img src="imagens/print-free-calendar-735x408.jpg" alt="Slide 1" class="img-fluid"
+                        style="max-width: 100%; max-height: 100%;">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="imagens/1223.jfif" alt="Slide 2" class="img-fluid"
+                        style="max-width: 100%; max-height: 100%;">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="imagens/il_1140xN.2462960703_ho9d.jpg" alt="Slide 3" class="img-fluid"
+                        style="max-width: 100%; max-height: 100%;">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles do Carrossel -->
+            <a class="carousel-control-prev" href="#meuCarrossel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" ariahidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#meuCarrossel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" ariahidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navbar com Logotipo e Nome do Projeto -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Seu Logo</a>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <button class="btn btn-link" id="logout-button">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                <span class="d-none d-lg-inline">Logout</span>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+    </header>
+    <!-- Outro conteúdo do site -->
+    <div class="container">
+        <h1 style="text-align: center;">Coleção de Imagens</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="image-card">
+                    <img src="imagens/aee8a6515c6bf8159ef5cf23002164c4-calendario-de-eventos-design-colorido.jpg"
+                        class="card-img-top" alt="Imagem 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Descrição da Imagem 1</h5>
+                        <p class="card-text">Texto descritivo para a primeira imagem.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-card">
+                    <img src="imagens/3bb1bd6000f1670fd6e0036177bae544-diseno-de-plantilla-de-calendario-de-eventos.jpg"
+                        class="card-img-top" alt="Imagem 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Descrição da Imagem 2</h5>
+                        <p class="card-text">Texto descritivo para a segunda imagem.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="image-card">
+                    <img src="imagens/a647aaec8ba6b10eead293a79f40d661-diseno-de-gradiente-de-calendario-de-eventos.jpg"
+                        class="card-img-top" alt="Imagem 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Descrição da Imagem 3</h5>
+                        <p class="card-text">Texto descritivo para a terceira imagem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ... Seu código HTML existente ... -->
+
+    <div class="container">
+
+
+        <div class="row">
+            <!-- Suas imagens e descrições aqui... -->
+        </div>
+    </div>
+
+    <!-- Adicionar a seção de login e criar conta -->
+    <div class="container text-center mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="border p-3 login-box">
+                    <h3>Login</h3>
+                    <!-- Adicione seus campos de login, por exemplo, usuário e senha -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <p style="margin: 100px 0;"></p>
+                        <a href="calendario.html" class="btn btn-success">Enter</a>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border p-3 create-account-box">
+                    <h3>Create an account</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="new-username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="new-password">
+                        </div>
+                        <a href="calendario.html" class="btn btn-success btn-block">Create Account</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicione o seguinte script no final do corpo do seu documento para iniciar o carrossel automaticamente -->
+    <script>
+        $(document).ready(function () {
+            $('#meuCarrossel').carousel({
+                interval: 100  // Tempo de espera entre os slides em milissegundos (2 segundos neste exemplo)
+            });
+        });
+    </script>
+    <!-- ... Seu código HTML existente ... -->
+
+</body>
+
+</html>

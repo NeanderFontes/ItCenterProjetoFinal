@@ -1,0 +1,56 @@
+/* style.css */
+
+/* Estilo das Imagens do Carrossel */
+.carousel img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilize a Navbar */
+.navbar {
+    background-color: black; /* Cor de fundo preta */
+    padding: 10px 100px; /* Ajuste o espaçamento interno da Navbar conforme necessário */
+    border-radius: 0; /* Sem borda arredondada */
+    height: 50px;
+    position: relative; /* Adicione esta propriedade para sobrepor outros elementos */
+    z-index: 1; /* Adicione uma camada z para definir a ordem de empilhamento */
+}
+
+/* Estilize o texto e outros elementos dentro da Navbar, por exemplo, os links de navegação */
+.navbar a {
+    color: white; /* Cor do texto dos links na Navbar */
+    /* Adicione outros estilos conforme necessário */
+}
+
+/* Estilize o botão de logout na Navbar */
+#logout-button {
+    background-color: transparent; /* Botão transparente */
+    border: none; /* Sem borda */
+    color: white; /* Cor do ícone e do texto do botão */
+}
+
+/* Altere o estilo do botão quando o mouse passar por cima dele */
+#logout-button:hover {
+    text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+    /* Adicione outros estilos conforme necessário */
+}
+
+/* Remova o fundo azul após a barra de navegação */
+.container {
+    background-color: transparent; /* Remova o fundo azul */
+    padding: 20px; /* Ajuste conforme necessário */
+}
+
+/* Caixas de Log In e Create an Account com fundo branco */
+.login-box, .create-account-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* style.css para calendario.html */
+/* Remova o sublinhado dos links no calendário FullCalendar */
+#calendario a {
+    text-decoration: none !important;
+}
+
