@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendário</title>
     
-    <!-- Inclua as bibliotecas FullCalendar CSS e JavaScript -->
+    <!-- Bibliotecas FullCalendar CSS e JavaScript -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.js"></script>
 
-    <!-- Inclua a biblioteca Bootstrap 4 para o modal -->
+    <!-- Biblioteca Bootstrap 4 para o modal -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -63,67 +63,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendario');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                events: [],
-                dateClick: function(info) {
-                    var dateStr = info.dateStr;
-                    $('#eventoModal').modal('show');
-                    $('#evento-date').val(dateStr);
-                    $('#evento-id').val(''); // Limpar o ID ao adicionar novo evento
-                },
-                eventClick: function(info) {
-                    var event = info.event;
-                    $('#evento-id').val(event.id);
-                    $('#evento-title').val(event.title);
-                    $('#evento-date').val(event.startStr);
-                    $('#evento-time').val(event.startStr.substring(11, 16));
-                    $('#evento-notes').val(event.extendedProps.notes);
-                    $('#eventoModal').modal('show');
-                }
-            });
-
-            calendar.render();
-
-            $('#adicionar-evento-notas').on('click', function() {
-                var eventId = $('#evento-id').val();
-                var title = $('#evento-title').val();
-                var date = $('#evento-date').val();
-                var time = $('#evento-time').val();
-                var notes = $('#evento-notes').val();
-
-                if (eventId) {
-                    // Atualizar evento existente
-                    var event = calendar.getEventById(eventId);
-                    event.setProp('title', title);
-                    event.setStart(date + 'T' + time);
-                    event.setExtendedProp('notes', notes);
-                } else {
-                    // Adicionar novo evento
-                    calendar.addEvent({
-                        id: Date.now(),
-                        title: title,
-                        start: date + 'T' + time,
-                        allDay: false,
-                        notes: notes
-                    });
-                }
-
-                $('#eventoModal').modal('hide');
-            });
-
-            $('#remover-evento').on('click', function() {
-                var eventId = $('#evento-id').val();
-                var event = calendar.getEventById(eventId);
-                if (event) {
-                    event.remove();
-                }
-                $('#eventoModal').modal('hide');
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
