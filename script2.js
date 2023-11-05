@@ -108,8 +108,8 @@ gotoBtn.addEventListener("click", gotoDate);
 
 function gotoDate() {
     const buscarData = dateInput.value.split("/");
-    if(buscarData.length === 2) {
-        if(buscarData[0] > 0 && buscarData[0] < 13 && buscarData[1].length === 4) {
+    if (buscarData.length === 2) {
+        if (buscarData[0] > 0 && buscarData[0] < 13 && buscarData[1].length === 4) {
             mesAtual = buscarData[0] - 1;
             anoAtual = buscarData[1];
             criarCalendario();
@@ -118,3 +118,56 @@ function gotoDate() {
     }
     alert("Data Inválida!");
 }
+
+// Adicionando JavaScript para Criar Eventos:
+
+const addEventBtn = document.querySelector(".add-event"),
+    addEventContainer = document.querySelector(".add-event-wrapper"),
+    addEventCloseBtn = document.querySelector(".close"),
+    addEventTitle = document.querySelector(".event-name"),
+    addEvenFrom = document.querySelector(".event-time-from"),
+    addEventTo = document.querySelector(".event-time-to");
+
+// Evento de interatividade com "add-event-btn"
+addEventBtn.addEventListener("click", () => {
+    addEventContainer.classList.toggle("active");
+});
+
+// Evento de interatividade com "add-event-btn"
+addEventCloseBtn.addEventListener("click", () => {
+    addEventContainer.classList.remove("active");
+});
+
+// Evento de interatividade com "add-event-btn"
+document.addEventListener("click", (e) => {
+    if (e.target != addEventBtn && !addEventContainer.contains(e.target)) {
+        addEventContainer.classList.remove("active");
+    }
+})
+
+// Adicionando entrada de valor String em Nomem do Evento
+addEventTitle.addEventListener("input", (e) => {
+    addEventTitle.value = addEventTitle.value.slice(0, 50);
+});
+
+// Adicionando valor para entrada de Inicio Evento e validando:
+addEvenFrom.addEventListener("input", (e) => {
+    addEvenFrom.value = addEvenFrom.value.replace(/[^0-9:]/g, "");
+    if (addEvenFrom.value.length === 2) {
+        addEvenFrom.value += ":";
+    }
+    if (addEvenFrom.value.length > 5) {
+        addEvenFrom.value = addEvenFrom.value.slice(0, 5);
+    }
+})
+
+// Adicionando valor para entrada de Final Evento e validando:
+addEventTo.addEventListener("input", (e) => {
+    addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
+    if (addEventTo.value.length === 2) {
+        addEventTo.value += ":";
+    }
+    if (addEventTo.value.length > 5) {
+        addEventTo.value = addEventTo.value.slice(0, 5);
+    }
+})
