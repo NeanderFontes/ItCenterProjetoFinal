@@ -21,6 +21,36 @@ const nomeMeses = [
     "Setembro", "Outubro", "Novembro", "Dezembro"
 ];
 
+// Eventos Default lista:
+const eventsArray = [
+    {
+        day: 7,
+        month: 11,
+        year: 2023,
+        events: [
+            {
+                title: "Event 1 lore ipsun",
+                time: "10:00 AM",
+            },
+            {
+                title: "Event 2",
+                time: "11:00 AM"
+            },
+        ],
+    },
+    {
+        day: 10,
+        month: 11,
+        year: 2023,
+        events: [
+            {
+                title: "Event 1 lore ipsun",
+                time: "10:00 AM",
+            },
+        ],
+    },
+];
+
 // Função para criar o calendário
 function criarCalendario() {
     const primeiroDia = new Date(anoAtual, mesAtual, 1);
@@ -42,8 +72,25 @@ function criarCalendario() {
 
     // Adiciona os dias do mês atual
     for (let i = 1; i <= ultimoDiaMes; i++) {
-        const classeDia = i === diaAtual.getDate() && mesAtual === diaAtual.getMonth() ? "hoje" : "";
-        diasDoMes.innerHTML += `<div class="dia ${classeDia}">${i}</div>`;
+        // Verifique se há eventos para a data atual
+        const eventsForDate = eventsArray.find((eventObj) => {
+            return eventObj.day === i && eventObj.month === mesAtual + 1 && eventObj.year === anoAtual;
+        });
+
+        let classeDia = "";
+
+        // Se a data atual corresponder ao dia do evento
+        if (i === diaAtual.getDate() && mesAtual === diaAtual.getMonth() && anoAtual === diaAtual.getFullYear()) {
+            classeDia = "hoje";
+        }
+
+        // Construa a string HTML com a classe apropriada com base nos eventos
+        if (eventsForDate) {
+            const eventTitles = "";
+            diasDoMes.innerHTML += `<div class="dia event ${classeDia}">${i}<br>${eventTitles}</div>`;
+        } else {
+            diasDoMes.innerHTML += `<div class="dia ${classeDia}">${i}</div>`;
+        }
     }
 }
 
