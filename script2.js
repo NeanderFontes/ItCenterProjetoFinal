@@ -92,6 +92,8 @@ function criarCalendario() {
             diasDoMes.innerHTML += `<div class="dia ${classeDia}">${i}</div>`;
         }
     }
+
+    addListener();
 }
 
 // Inicializa o calendário
@@ -218,3 +220,78 @@ addEventTo.addEventListener("input", (e) => {
         addEventTo.value = addEventTo.value.slice(0, 5);
     }
 })
+
+// Função para adicionar ouvintes de clique aos dias do calendário
+function addListener() {
+    // Seleciona todos os elementos com a classe "dia"
+    const days = document.querySelectorAll(".dia");
+
+    // Itera sobre cada dia
+    days.forEach((dia) => {
+        dia.addEventListener("click", (e) => {
+            // Atualiza o dia ativo com o número do dia clicado
+            activeDay = Number(e.target.innerHTML);
+
+            // 
+            getActiveDay(e.target.innerHTML);
+
+            // Remove a classe "active" de todos os dias
+            days.forEach((dia) => {
+                dia.classList.remove("active");
+            });
+
+            // Verifica se o dia clicado é do mês anterior
+            if (e.target.classList.contains("prev-date")) {
+                // Chama a função para navegar para o mês anterior
+                mesAnterior();
+
+                // Aguarda 100ms antes de atualizar os dias ativos
+                setTimeout(() => {
+                    const days = document.querySelectorAll(".dia");
+
+                    // Itera sobre os dias para encontrar o dia clicado no novo mês
+                    days.forEach((dia) => {
+                        if (!dia.classList.contains("prev-date") && dia.innerHTML === e.target.innerHTML) {
+                            dia.classList.add("active"); // Adiciona a classe "active" ao dia clicado
+                        }
+                    });
+                }, 100);
+            } else if (e.target.classList.contains("next-date")) {
+                // Chama a função para navegar para o próximo mês
+                proximoMes();
+
+                setTimeout(() => {
+                    const days = document.querySelectorAll(".dia");
+
+                    // Itera sobre os dias para encontrar o dia clicado no novo mês
+                    days.forEach((dia) => {
+                        if (!dia.classList.contains("next-date") && dia.innerHTML === e.target.innerHTML) {
+                            dia.classList.add("active"); // Adiciona a classe "active" ao dia clicado
+                        }
+                    });
+                }, 100);
+            } else {
+                // Se o dia clicado não é do mês anterior ou do próximo mês, apenas adiciona a classe "active"
+                e.target.classList.add("active");
+            }
+        });
+    });
+}
+
+// Função para ativar os eventos do dia ativo:
+const eventDay = document.querySelector(".event-day");
+const eventDate = document.querySelector(".event-date");
+
+function getActiveDay(diaAtual) {
+    // Cria uma data com base no ano, mês e dia atual
+    const day = new Date(anoAtual, mesAtual, diaAtual);
+
+    // Extrai o nome do dia da semana (por exemplo, "Seg" para segunda-feira)
+    const dayName = day.toString().split(" ")[0];
+
+    // Atualiza o conteúdo do elemento com a classe "event-day" com o nome do dia da semana
+    eventDay.innerHTML = dayName;
+
+    // Atualiza o conteúdo do elemento com a classe "event-date" com a data completa (dia, mês e ano)
+    eventDate.innerHTML = diaAtual + " " + nomeMeses[mesAtual] + " " + anoAtual;
+}
