@@ -337,7 +337,7 @@ body {
     color: #fff;
 }
 
-.event::after {
+.events .event::after {
     /* content: "✓"; */
     content: "✔";
     position: absolute;
@@ -352,7 +352,7 @@ body {
     transform: translateY(-50%);
 }
 
-.event:hover::after {
+.events .event:hover::after {
     display: flex;
 }
 
