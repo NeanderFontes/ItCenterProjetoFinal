@@ -7,6 +7,11 @@ const diaPosterior = document.querySelector(".next");
 const todayBtn = document.querySelector(".today-btn");
 const gotoBtn = document.querySelector(".goto-btn");
 const dateInput = document.querySelector(".date-input");
+const eventsContainer = document.querySelector(".events")
+
+// Acesso aos elementos HTML para os eventos do dia/dia ativo:
+const eventDay = document.querySelector(".event-day");
+const eventDate = document.querySelector(".event-date");
 
 // Variáveis de controle do calendário
 let diaAtual = new Date();
@@ -24,7 +29,7 @@ const nomeMeses = [
 // Eventos Default lista:
 const eventsArray = [
     {
-        day: 7,
+        day: 8,
         month: 11,
         year: 2023,
         events: [
@@ -39,7 +44,7 @@ const eventsArray = [
         ],
     },
     {
-        day: 10,
+        day: 15,
         month: 11,
         year: 2023,
         events: [
@@ -70,12 +75,18 @@ function criarCalendario() {
         diasDoMes.innerHTML += `<div class="dia prev-date">${diaAnterior}</div>`;
     }
 
+
     // Adiciona os dias do mês atual
     for (let i = 1; i <= ultimoDiaMes; i++) {
         // Verifique se há eventos para a data atual
         const eventsForDate = eventsArray.find((eventObj) => {
             return eventObj.day === i && eventObj.month === mesAtual + 1 && eventObj.year === anoAtual;
         });
+
+
+        activeDay = i;
+        getActiveDay(i);
+        updateEvents(i);
 
         let classeDia = "";
 
@@ -234,6 +245,7 @@ function addListener() {
 
             // 
             getActiveDay(e.target.innerHTML);
+            updateEvents(Number(e.target.innerHTML));
 
             // Remove a classe "active" de todos os dias
             days.forEach((dia) => {
@@ -278,10 +290,8 @@ function addListener() {
     });
 }
 
-// Função para ativar os eventos do dia ativo:
-const eventDay = document.querySelector(".event-day");
-const eventDate = document.querySelector(".event-date");
 
+// Função para ativar os eventos do dia ativo:
 function getActiveDay(diaAtual) {
     // Cria uma data com base no ano, mês e dia atual
     const day = new Date(anoAtual, mesAtual, diaAtual);
@@ -294,4 +304,39 @@ function getActiveDay(diaAtual) {
 
     // Atualiza o conteúdo do elemento com a classe "event-date" com a data completa (dia, mês e ano)
     eventDate.innerHTML = diaAtual + " " + nomeMeses[mesAtual] + " " + anoAtual;
+}
+
+// Função para mostrar eventos do dia selecionado
+function updateEvents(date) {
+    let events = ""; // Inicializa uma string vazia para armazenar os eventos
+
+    // Encontra o evento correspondente à data selecionada
+    const eventsForDate = eventsArray.find((eventObj) => {
+        return date === eventObj.day && mesAtual + 1 === eventObj.month && anoAtual === eventObj.year;
+    });
+
+    // Se há eventos para a data selecionada, crie a representação HTML dos eventos
+    if (eventsForDate) {
+        eventsForDate.events.forEach((event) => {
+            events += `
+            <div class="event">
+                <div class="title">
+                    <i class="fas fa-circle"></i>
+                    <h3 class="event-title">${event.title}</h3>
+                </div>
+                <div class="event-time">
+                    <span class="event-time">${event.time}</span>
+                </div>
+            </div>`;
+        });
+    } else {
+        // Se não houver eventos para o dia selecionado, exibe uma mensagem "No Events"
+        events = `
+        <div class="no-event">
+            <h3>No Events</h3>
+        </div>`;
+    }
+
+    // Atualiza o conteúdo do elemento com os eventos
+    eventsContainer.innerHTML = events;
 }
